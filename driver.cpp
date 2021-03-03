@@ -25,7 +25,8 @@ int main(int argc, char** argv)
     cout << value << endl;
     ll->display();
     ll->addAtIndex(2,20);
-    ll->addAtIndex(3,15);
+    ll->addAtIndex(7,15);
+    ll->addAtIndex(4,50);
     ll->display();
     
     

@@ -14,7 +14,13 @@ LinkedList::LinkedList()
 int LinkedList::addAtIndex(int index, int value)
 {
     
-                Node* prevDude = this->head;
+        if(index < 0 || index >= this->count)
+        {
+            cout << "ArrayIndexOutOfBoundException!!!!" << endl;
+        }
+        else
+        {
+            Node* prevDude = this->head;
                 Node* currNodeAfter = this->head;
                 Node* newNode = new Node(value);
                 
@@ -36,6 +42,7 @@ int LinkedList::addAtIndex(int index, int value)
                
                this->count++;
                return value;
+        }
             
             
         
