@@ -1,0 +1,103 @@
+void LinkedList::insertionSort(int ArrayLength)
+{
+    Node* tempSwap = this->head;
+    Node* theFollower = this->head;
+    Node* prev = this-> head;
+    Node* prev2 = this->head;
+    for(int currStart = 0; currStart < this->count; currStart++) 
+    {
+       // for(int i = 0; i < currStart; i++) 
+       // {
+            theFollower = theFollower -> getNextNode();
+        //}
+        //for(int x = 0; x < currStart; x++) 
+        //{
+            prev = prev -> getNextNode();
+       // }
+        while(theFollower != this->head)
+        {
+            
+            //for(int a = 0; a <= currStart - counter; a++) 
+            
+                prev2 = prev2 -> getNextNode();
+            
+            if(theFollower->getPayload() < prev->getPayload())
+            {
+                tempSwap = theFollower;
+                theFollower = prev;
+                prev = tempSwap;
+            }
+                theFollower = prev2;
+              
+        }
+    }
+
+
+
+}
+
+
+
+
+
+void LinkedList::insertionSort(int ArrayLength)
+{
+    Node* tempSwap = this->head;
+    Node* theFollower = this->head;
+    Node* prev = this-> head;
+    Node* prev2 = this->head;
+    for(int currStart = 0; currStart < ArrayLength; currStart++) 
+    {
+        for(int i = 0; i <= currStart; i++) 
+        {
+            theFollower = theFollower -> getNextNode();
+        }
+        for(int x = 0; x <= currStart -1; x++) 
+        {
+            prev = prev -> getNextNode();
+        }
+        while(theFollower != this->head)
+        {
+            int counter = 0;
+            for(int a = 0; a <= currStart - counter; a++) 
+            {
+                prev2 = prev2 -> getNextNode();
+            }
+            if(theFollower->getPayload() < prev->getPayload())
+            {
+                tempSwap = theFollower;
+                theFollower = prev;
+                prev = tempSwap;
+            }
+            
+                theFollower = prev2;
+                counter++;
+        }
+    }
+
+
+
+}
+
+
+void LinkedList::insertionSort(int ArrayLength)
+{
+    Node* tempSwap = this->head;
+    Node* curr =new Node(0);
+    Node* theFollower = curr;
+    while(tempSwap != NULL)
+    {
+        if(curr->getPayload() > tempSwap->getPayload())
+        {
+            curr = theFollower;
+            while(curr->getNextNode() != NULL && curr->getNextNode()->getPayload() < tempSwap->getPayload())
+            {
+                curr = curr->getNextNode();
+                Node* next = tempSwap->getNextNode();
+                tempSwap->setNextNode(curr->getNextNode());
+                curr->setNextNode(tempSwap);
+                tempSwap = tempSwap->getNextNode();
+                
+            }
+        }
+    }

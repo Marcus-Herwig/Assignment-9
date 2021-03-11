@@ -10,43 +10,57 @@ LinkedList::LinkedList()
     this->tail = NULL;
     this->count = 0;
 }
-
-int LinkedList::addAtIndex(int index, int value)
+void LinkedList::insertionSort(int ArrayLength)
 {
-    
-        if(index < 0 || index >= this->count)
+    Node* tempSwap = this->head;
+    Node* curr = this->head;
+    Node* theFollower = this->head;
+    int count2 = 0;
+    int count3 = this->count;
+    while(count2 < this->count)
+    {
+        if(theFollower->getNextNode() != NULL)
         {
-            cout << "ArrayIndexOutOfBoundException!!!!" << endl;
+             theFollower = theFollower->getNextNode();
         }
-        else
-        {
-            Node* prevDude = this->head;
-                Node* currNodeAfter = this->head;
-                Node* newNode = new Node(value);
-                
-                
-                for(int i = 0; i < index; i++)
-                {
-                    currNodeAfter = currNodeAfter->getNextNode();
-                }
-
-               
-                while(prevDude->getNextNode() != currNodeAfter)
-                {
-                    prevDude = prevDude->getNextNode();
-                    
-                }
-               prevDude->setNextNode(newNode);
-               newNode->setNextNode(currNodeAfter);
-              
-               
-               this->count++;
-               return value;
-        }
-            
-            
-        
        
+        if(tempSwap->getPayload() < theFollower->getPayload())
+        {
+            curr = theFollower;
+            tempSwap->setNextNode(theFollower->getNextNode());
+            theFollower->setNextNode(tempSwap);
+        }
+        tempSwap = tempSwap->getNextNode();
+        count2 = count2+1;
+    }
+
+
+
+}
+
+void LinkedList::addAtIndex(int value, int index)
+{
+    if(index == 0)
+    {
+        this->addFront(value);
+    }
+    else if(index == this->count)
+    {
+        this->addEnd(value);
+    }
+    else
+    {
+        Node* dude2Add = new Node(value);
+        Node* prevDude = this->head;
+        for(int i = 0; i < (index-1); i++)
+        {
+            prevDude = prevDude->getNextNode();
+        }
+        dude2Add->setNextNode(prevDude->getNextNode());
+        prevDude->setNextNode(dude2Add);
+        this->count++;
+    }
+    
 }
 
 int LinkedList::removeAtIndex(int index)
